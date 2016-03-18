@@ -32,14 +32,18 @@ window.addEventListener('load', function() {
 		if (ustavi) {
 			ustavi = false;
 		} else {
-			novId = (id+1) % vrednosti.length;
-			timeout = Math.floor((Math.random() * (maxCas-minCas)) + minCas);
+			var novId = (id+1) % vrednosti.length;
+			var timeout = Math.floor((Math.random() * (maxCas-minCas)) + minCas);
 			setTimeout(function() {spremeniBarvo(novId)} , timeout);
 		}		
 	}
 	
 	var stop = function(event) {
 		ustavi = true;
+		var zac = document.querySelector("#start");
+ 			zac.innerHTML = "Zaženi stroboskop";
+ 			zac.removeEventListener('click', stop);
+ 			zac.addEventListener('click', zagon);
 	}
 	
 	var zagon = function(event) {
